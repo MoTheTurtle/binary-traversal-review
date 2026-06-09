@@ -178,7 +178,15 @@ public class TraversalReview {
      * @return whether every node has 0 or 2 children
      */
     public static boolean noSingleChildren(TreeNode node) {
-        return false;
+        if(node == null) return true;
+        boolean children = true;
+        if(node.left == null && node.right != null){
+            children = false;
+        }
+        if(node.right==null && node.left != null){
+            children = false;
+        }
+        return children && noSingleChildren(node.left) && noSingleChildren(node.right);
     }
 
     /**
@@ -204,7 +212,11 @@ public class TraversalReview {
      * @return whether there is it least one zero value in the tree.
      */
     public static boolean hasZero(TreeNode node) {
-        return false;
+        if(node ==null) return false;
+        if(node.left.data == 0 || node.right.data == 0 ){
+            return false; 
+        }
+        return true; 
     }
 
     /**
