@@ -140,11 +140,18 @@ public class TraversalReview {
      */
     public static boolean isIncreasing(TreeNode node) {
         if(node == null) return true;
-        int max = node.data; 
-        int left = isIncreasing(node.left);
-        if(isIncreasing(node.left) < max){
-            return true; 
+        if(node.left != null){
+            if(node.left.data <= node.data){
+                return false;
+            }
         }
+
+        if(node.right != null){
+            if(node.right.data<= node.data){
+                return false;
+            }
+        }
+        return isIncreasing(node.left) && isIncreasing(node.right);
 
     } 
 
